@@ -6,7 +6,7 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:26 by romaurel          #+#    #+#             */
-/*   Updated: 2023/03/15 16:42:29 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/03/15 19:12:08 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ t_stack	*ft_lstnew(int content);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
 void	ft_lstadd_front(t_stack **lst, t_stack *new);
 t_stack	*ft_lstlast(t_stack *lst);
+
+/*	lstdel.c	*/
+void	ft_lstdelone(t_stack *lst);
+void	ft_lstclear(t_stack **lst, void (*del)(void *));
 
 #endif
  

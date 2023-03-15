@@ -6,7 +6,7 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:17:39 by romaurel          #+#    #+#             */
-/*   Updated: 2023/03/15 17:02:15 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/03/15 19:12:00 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,44 +14,45 @@
 
 void	sa(t_stack **a)
 {
-	t_stack	*tp;
+	int	temp;
 
 	if (!(*a)->nx || !*a)
 		return ;
-	tp = (*a);
-	tp = tp->nx;
-	(*a)->nx = tp->nx;
-	tp->nx = (*a);
-	(*a) = tp;
+	temp = (*a)->i;
+	(*a)->i = (*a)->nx->i;
+	(*a)->nx->i = temp;
 }
 
 void	sb(t_stack **b)
 {
-	sa(*b);
+	sa(b);
 }
 
 void	ss(t_stack **a, t_stack **b)
 {
-	sa(*a);
-	sb(*b);
+	sa(a);
+	sb(b);
+}
+
+void	pa(t_stack **a, t_stack **b)
+{
+	t_stack	*t;
+
+	if (!*b)
+		return ;
+	t = (*b)->nx;
+	ft_lstadd_back(a, ft_lstnew((*b)->i));
+	ft_lstdelone((*b));
+	(*b) = t;
 }
 
 int	main(void){
-	t_stack	*a;
-	t_stack	*p;
+	t_prog	p;
 
-	a = ft_lstnew(10);
-	ft_lstadd_back(&a, ft_lstnew(9));
-	p = a;
-	while (p){
-		printf("%d\n", p->i);
-		p = p->nx;
-	}
-	sa(&a);
-	p = a;
-	while (p){
-		printf("%d\n", p->i);
-		p = p->nx;
-	}
+	p.a = ft_lstnew(10);
+	p.b = ft_lstnew(1);
+	printf("a: %d b: %d\n", p.a->i, p.b->i);
+	pa(&p.a, &p.b);
+	printf("a: %d b: %d\n", p.a->i, p.b->i);
 	return (0);
 }
