@@ -6,7 +6,7 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:33:58 by romaurel          #+#    #+#             */
-/*   Updated: 2023/03/15 19:12:27 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/03/20 12:04:38 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,10 @@ void	ft_lstdelone(t_stack *lst)
 {
 	if (!lst)
 		return ;
-	lst->i = 0;
 	free(lst);
 }
 
-void	ft_lstclear(t_stack **lst, void (*del)(void *))
+void	ft_lstclear(t_stack **lst)
 {
 	t_stack	*prev;
 

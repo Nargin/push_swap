@@ -6,7 +6,7 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:40:35 by romaurel          #+#    #+#             */
-/*   Updated: 2023/03/15 16:42:50 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/03/20 12:41:04 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new)
 
 	if (!new)
 		return ;
-	if (!*lst)
+	if (!(*lst))
 	{
 		*lst = new;
 		return ;
@@ -56,4 +56,17 @@ t_stack	*ft_lstlast(t_stack *lst)
 	while (lst->nx)
 		lst = lst->nx;
 	return (lst);
+}
+
+int	ft_lstsize(t_stack *lst)
+{
+	int		i;
+
+	i = 0;
+	while (lst)
+	{
+		lst = lst->nx;
+		i++;
+	}
+	return (i);
 }

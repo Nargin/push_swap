@@ -6,7 +6,7 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:17:39 by romaurel          #+#    #+#             */
-/*   Updated: 2023/03/15 19:12:00 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/03/16 15:47:22 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,27 +32,4 @@ void	ss(t_stack **a, t_stack **b)
 {
 	sa(a);
 	sb(b);
-}
-
-void	pa(t_stack **a, t_stack **b)
-{
-	t_stack	*t;
-
-	if (!*b)
-		return ;
-	t = (*b)->nx;
-	ft_lstadd_back(a, ft_lstnew((*b)->i));
-	ft_lstdelone((*b));
-	(*b) = t;
-}
-
-int	main(void){
-	t_prog	p;
-
-	p.a = ft_lstnew(10);
-	p.b = ft_lstnew(1);
-	printf("a: %d b: %d\n", p.a->i, p.b->i);
-	pa(&p.a, &p.b);
-	printf("a: %d b: %d\n", p.a->i, p.b->i);
-	return (0);
 }
