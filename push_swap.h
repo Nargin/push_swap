@@ -6,7 +6,7 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:26 by romaurel          #+#    #+#             */
-/*   Updated: 2023/03/20 16:24:00 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/03/22 22:15:00 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "ft_printf/ft_printf.h"
 
 typedef struct s_stack {
 	int					i;
@@ -52,7 +53,11 @@ void	rrr(t_stack **a, t_stack **b);
 void	rra(t_stack **a);
 void	rrb(t_stack **b);
 
-
+/*		main.c	*/
 void	prtl(t_stack *p, char stack);
+
+/*		utils.c	*/
+int	is_doublon(char *av[], int ac);
+int	is_sorted(t_stack *a);
 
 #endif

@@ -1,37 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   p.c                                                :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/16 15:27:19 by romaurel          #+#    #+#             */
-/*   Updated: 2023/03/22 14:27:30 by romaurel         ###   ########.fr       */
+/*   Created: 2023/03/22 14:30:10 by romaurel          #+#    #+#             */
+/*   Updated: 2023/03/22 15:39:59 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pa(t_stack **a, t_stack **b)
+int	is_doublon(char *av[], int ac)
 {
-	t_stack	*tmp;
+	int	i;
+	int j;
 
-	if (!(*b))
-		return ;
-	tmp = (*b);
-	ft_lstadd_front(a, ft_lstnew((*b)->i));
-	(*b) = tmp->nx;
-	free(tmp);
+	i = 0;
+	while (++i < ac)
+	{
+		j = 0;
+		while (++j < ac)
+			if (atoi(av[j]) == atoi(av[i]) && j != i)
+				return (0);
+	}
+	return (1);
 }
 
-void	pb(t_stack **a, t_stack **b)
+int	is_sorted(t_stack *a)
 {
-	t_stack	*tmp;
+	int	i;
 
-	if (!(*a))
-		return ;
-	tmp = (*a);
-	ft_lstadd_front(b, ft_lstnew((*a)->i));
-	(*a) = tmp->nx;
-	free(tmp);
+	i = a->i;
+	a = a->nx;
+	while (a)
+	{
+		if (a->i < i)
+			return (0);
+		i = a->i;
+		a = a->nx;
+	}
+	return (1);
 }

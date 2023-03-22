@@ -6,7 +6,7 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 15:47:33 by romaurel          #+#    #+#             */
-/*   Updated: 2023/03/20 16:35:35 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/03/22 22:15:55 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,31 +18,71 @@ void	prtl(t_stack *p, char stack)
 
 	i = 0;
 	while (p){
-		printf("stack %c -> %d %p\n", stack, p->i, p->nx);
+		ft_printf("stack %c -> %d %p\n", stack, p->i, p->nx);
 		p = p->nx;
 		i++;
 	}
 	if (!i)
-		printf("stack %c -> empty\n", stack);
+		ft_printf("stack %c -> empty\n", stack);
+	ft_printf("----------------------------\n");
 }
 
-int	main(void){
-	t_stack	*a;
-	t_stack	*b;
-	t_stack	*p;
+void	three(t_stack **a)
+{
+	if (ft_lstsize(*a) == 2)
+		sa(a);
+	while (!is_sorted(*a))
+	{
+		if ((*a)->i > (*a)->nx->i && (*a)->nx->i < (*a)->nx->nx->i
+			&& (*a)->i < (*a)->nx->nx->i)
+			sa(a);
+		else if ((*a)->i > (*a)->nx->i && (*a)->nx->i < (*a)->nx->nx->i
+			&& (*a)->i > (*a)->nx->nx->i)
+			ra(a);
+		else if ((*a)->i < (*a)->nx->i && (*a)->nx->i > (*a)->nx->nx->i
+			&& (*a)->i < (*a)->nx->nx->i)
+		{
+			sa(a);
+			ra(a);
+		}
+		else if ((*a)->i > (*a)->nx->i && (*a)->nx->i > (*a)->nx->nx->i
+			&& (*a)->i > (*a)->nx->nx->i)
+		{
+			ra(a);
+			sa(a);
+		}
+		else if ((*a)->i < (*a)->nx->i && (*a)->nx->i > (*a)->nx->nx->i
+			&& (*a)->i > (*a)->nx->nx->i)
+			rra(a);
+	}
+}
 
-	a = NULL;
-	b = NULL;
-	for (int i = 1; i < 50; i++){
-		ft_lstadd_back(&a, ft_lstnew(i));
-		ft_lstadd_back(&b, ft_lstnew(i + 1));
-	}
-	p = a;
-	for(int u = 0; p; printf("%d\n", u++)){
-		pb(&p, &b);
-		p = p->nx;
-	}
+void	algorithm(t_stack **a, t_stack **b)
+{
+	int	i;
+
+	i = ft_lstsize((*a));
+	if (i <= 3)
+		three(a);
+	(void) b;
+	// if (i <= 5)
+}
+
+int	main(int ac, char *av[]){
+	t_stack	*a = {NULL};
+	t_stack	*b = {NULL};
+	int	i;
+
+	i = 0;
+	if (ac < 3)
+		return (ft_printf("Error : Invalid arguments"));
+	if (!is_doublon(av, ac))
+		return (ft_printf("Error : Doublon"));
+	while (++i < ac)
+		ft_lstadd_back(&a, ft_lstnew(atoi(av[i])));
+	if (is_sorted(a))
+		return (0);
+	algorithm(&a, &b);
 	prtl(a, 'a');
-	prtl(b, 'b');
 	return (0);
 }
