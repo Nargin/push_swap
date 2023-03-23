@@ -6,7 +6,7 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 15:47:33 by romaurel          #+#    #+#             */
-/*   Updated: 2023/03/23 16:38:05 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/03/23 18:13:11 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,30 +31,27 @@ void	three(t_stack **a)
 {
 	if (ft_lstsize(*a) == 2)
 		sa(a);
-	while (!is_sorted(*a))
+	if ((*a)->i > (*a)->nx->i && (*a)->nx->i < (*a)->nx->nx->i
+		&& (*a)->i < (*a)->nx->nx->i)
+		sa(a);
+	else if ((*a)->i > (*a)->nx->i && (*a)->nx->i < (*a)->nx->nx->i
+		&& (*a)->i > (*a)->nx->nx->i)
+		ra(a);
+	else if ((*a)->i < (*a)->nx->i && (*a)->nx->i > (*a)->nx->nx->i
+		&& (*a)->i < (*a)->nx->nx->i)
 	{
-		if ((*a)->i > (*a)->nx->i && (*a)->nx->i < (*a)->nx->nx->i
-			&& (*a)->i < (*a)->nx->nx->i)
-			sa(a);
-		else if ((*a)->i > (*a)->nx->i && (*a)->nx->i < (*a)->nx->nx->i
-			&& (*a)->i > (*a)->nx->nx->i)
-			ra(a);
-		else if ((*a)->i < (*a)->nx->i && (*a)->nx->i > (*a)->nx->nx->i
-			&& (*a)->i < (*a)->nx->nx->i)
-		{
-			sa(a);
-			ra(a);
-		}
-		else if ((*a)->i > (*a)->nx->i && (*a)->nx->i > (*a)->nx->nx->i
-			&& (*a)->i > (*a)->nx->nx->i)
-		{
-			ra(a);
-			sa(a);
-		}
-		else if ((*a)->i < (*a)->nx->i && (*a)->nx->i > (*a)->nx->nx->i
-			&& (*a)->i > (*a)->nx->nx->i)
-			rra(a);
+		sa(a);
+		ra(a);
 	}
+	else if ((*a)->i > (*a)->nx->i && (*a)->nx->i > (*a)->nx->nx->i
+		&& (*a)->i > (*a)->nx->nx->i)
+	{
+		ra(a);
+		sa(a);
+	}
+	else if ((*a)->i < (*a)->nx->i && (*a)->nx->i > (*a)->nx->nx->i
+		&& (*a)->i > (*a)->nx->nx->i)
+		rra(a);
 }
 
 int	get_median(t_stack *a, int size)
@@ -72,11 +69,11 @@ int	get_median(t_stack *a, int size)
 		tab[++i] = a->i;
 		a = a->nx;
 	}
-	i = 0;
-	while (i < size)
+	i = -1;
+	while (++i < size)
 	{
-		j = 0;
-		while (j < size - i)
+		j = -1;
+		while (++j < size - i)
 		{
 			if (tab[j] > tab[j + 1])
 			{
@@ -84,13 +81,35 @@ int	get_median(t_stack *a, int size)
 				tab[j] = tab[j + 1];
 				tab[j + 1] = t;
 			}
-			j++;
 		}
-		i++;
 	}
 	median = tab[size / 2];
 	free(tab);
 	return (median);
+}
+
+void	five(t_stack **a, t_stack **b)
+{
+	int	median;
+	int	i;
+
+	i = 0;
+	median = get_median(*a, ft_lstsize(*a));
+	prtl(*a, 'a');
+	while (i < 2)
+	{
+		ft_printf("I = %d", i);
+		if ((*a)->i < median)
+		{
+			pb(a, b);
+			i++;
+		}
+		else
+			ra(a);
+	}
+	three(a);
+	while (i--)
+		pa(a, b);
 }
 
 void	algorithm(t_stack **a, t_stack **b)
@@ -100,9 +119,9 @@ void	algorithm(t_stack **a, t_stack **b)
 	i = ft_lstsize((*a));
 	if (i <= 3)
 		three(a);
-	(void) b;
-	// if (i <= 5)
-	ft_printf("%d\n", get_median(*a, i));
+	if (i <= 5)
+		five(a, b);
+	// ft_printf("%d\n", get_median(*a, i));
 }
 
 int	main(int ac, char *av[]){

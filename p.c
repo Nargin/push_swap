@@ -6,7 +6,7 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 15:27:19 by romaurel          #+#    #+#             */
-/*   Updated: 2023/03/22 14:27:30 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/03/23 18:04:30 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	pa(t_stack **a, t_stack **b)
 	ft_lstadd_front(a, ft_lstnew((*b)->i));
 	(*b) = tmp->nx;
 	free(tmp);
+	ft_printf("pa\n");
 }
 
 void	pb(t_stack **a, t_stack **b)
@@ -34,4 +35,5 @@ void	pb(t_stack **a, t_stack **b)
 	ft_lstadd_front(b, ft_lstnew((*a)->i));
 	(*a) = tmp->nx;
 	free(tmp);
+	ft_printf("pb\n");
 }
