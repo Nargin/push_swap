@@ -6,7 +6,7 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 15:47:33 by romaurel          #+#    #+#             */
-/*   Updated: 2023/03/22 22:15:55 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/03/23 16:38:05 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,42 @@ void	three(t_stack **a)
 	}
 }
 
+int	get_median(t_stack *a, int size)
+{
+	int	i;
+	int	j;
+	int	*tab;
+	int	median;
+	int	t;
+
+	i = -1;
+	tab = malloc(size * sizeof(int));
+	while (a)
+	{
+		tab[++i] = a->i;
+		a = a->nx;
+	}
+	i = 0;
+	while (i < size)
+	{
+		j = 0;
+		while (j < size - i)
+		{
+			if (tab[j] > tab[j + 1])
+			{
+				t = tab[j];
+				tab[j] = tab[j + 1];
+				tab[j + 1] = t;
+			}
+			j++;
+		}
+		i++;
+	}
+	median = tab[size / 2];
+	free(tab);
+	return (median);
+}
+
 void	algorithm(t_stack **a, t_stack **b)
 {
 	int	i;
@@ -66,6 +102,7 @@ void	algorithm(t_stack **a, t_stack **b)
 		three(a);
 	(void) b;
 	// if (i <= 5)
+	ft_printf("%d\n", get_median(*a, i));
 }
 
 int	main(int ac, char *av[]){
