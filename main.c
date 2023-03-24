@@ -6,7 +6,7 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 15:47:33 by romaurel          #+#    #+#             */
-/*   Updated: 2023/03/23 18:13:11 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/03/24 18:40:07 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,9 @@ void	five(t_stack **a, t_stack **b)
 
 	i = 0;
 	median = get_median(*a, ft_lstsize(*a));
-	prtl(*a, 'a');
 	while (i < 2)
 	{
-		ft_printf("I = %d", i);
-		if ((*a)->i < median)
+		if ((*a)->i <= median)
 		{
 			pb(a, b);
 			i++;
