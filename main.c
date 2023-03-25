@@ -93,6 +93,34 @@ int	get_median(t_stack *a, int size)
 	return (median);
 }
 
+void	five(t_stack **a, t_stack **b)
+{
+	int	median;
+	int	i;
+
+	i = 0;
+	median = get_median(*a, ft_lstsize(*a));
+	while (i < 2 && (*a))
+	{
+		if ((*a)->i <= median)
+		{
+			pb(a, b);
+			i++;
+		}
+		else
+			ra(a);
+	}
+	if (i == 0)
+		return ;
+	if ((*a)->i > (*a)->nx->i)
+		sa(a);
+	three(a);
+	if ((*b) && (*b)->i < (*b)->nx->i)
+		sb(b);
+	while (i--)
+		pa(a, b);
+}
+
 void	algorithm(t_stack **a, t_stack **b)
 {
 	int	i;
@@ -101,8 +129,8 @@ void	algorithm(t_stack **a, t_stack **b)
 	if (i <= 3)
 		three(a);
 	(void) b;
-	// if (i <= 5)
-	ft_printf("%d\n", get_median(*a, i));
+	if (i <= 5)
+		five(a, b);
 }
 
 int	main(int ac, char *av[]){
@@ -121,5 +149,6 @@ int	main(int ac, char *av[]){
 		return (0);
 	algorithm(&a, &b);
 	prtl(a, 'a');
+	prtl(b, 'b');
 	return (0);
 }

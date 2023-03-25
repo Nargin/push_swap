@@ -21,7 +21,7 @@ void	sa(t_stack **a)
 	temp = (*a)->i;
 	(*a)->i = (*a)->nx->i;
 	(*a)->nx->i = temp;
-	write (1, "sa\n", 3);
+	ft_printf("sa\n");
 }
 
 void	sb(t_stack **b)
@@ -33,7 +33,7 @@ void	sb(t_stack **b)
 	temp = (*b)->i;
 	(*b)->i = (*b)->nx->i;
 	(*b)->nx->i = temp;
-	write (1, "sb\n", 3);
+	ft_printf("sb\n");
 }
 
 void	ss(t_stack **a, t_stack **b)

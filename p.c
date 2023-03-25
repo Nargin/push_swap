@@ -22,6 +22,7 @@ void	pa(t_stack **a, t_stack **b)
 	ft_lstadd_front(a, ft_lstnew((*b)->i));
 	(*b) = tmp->nx;
 	free(tmp);
+	ft_printf("pa\n");
 }
 
 void	pb(t_stack **a, t_stack **b)
@@ -34,4 +35,5 @@ void	pb(t_stack **a, t_stack **b)
 	ft_lstadd_front(b, ft_lstnew((*a)->i));
 	(*a) = tmp->nx;
 	free(tmp);
+	ft_printf("pb\n");
 }
