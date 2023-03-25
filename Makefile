@@ -1,4 +1,4 @@
-SRC = lstfunc.c lstdel.c p.c r.c rr.c s.c main.c utils.c
+SRC = lstfunc.c lstdel.c instructions/p.c instructions/r.c instructions/rr.c instructions/s.c main.c utils.c
 
 OBJS = $(SRC:.c=.o)
 

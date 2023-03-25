@@ -99,6 +99,8 @@ void	five(t_stack **a, t_stack **b)
 	int	i;
 
 	i = 0;
+	if (ft_lstsize(*a) == 3)
+		return ((void)three(a));
 	median = get_median(*a, ft_lstsize(*a));
 	while (i < 2 && (*a))
 	{
@@ -126,9 +128,7 @@ void	algorithm(t_stack **a, t_stack **b)
 	int	i;
 
 	i = ft_lstsize((*a));
-	if (i <= 3)
-		three(a);
-	else if (i <= 5)
+	if (i <= 5)
 		five(a, b);
 }
 
