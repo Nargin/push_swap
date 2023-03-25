@@ -128,8 +128,7 @@ void	algorithm(t_stack **a, t_stack **b)
 	i = ft_lstsize((*a));
 	if (i <= 3)
 		three(a);
-	(void) b;
-	if (i <= 5)
+	else if (i <= 5)
 		five(a, b);
 }
 
@@ -148,7 +147,7 @@ int	main(int ac, char *av[]){
 	if (is_sorted(a))
 		return (0);
 	algorithm(&a, &b);
-	prtl(a, 'a');
-	prtl(b, 'b');
+	// prtl(a, 'a');
+	// prtl(b, 'b');
 	return (0);
 }
