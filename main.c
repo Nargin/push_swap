@@ -6,7 +6,7 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 15:47:33 by romaurel          #+#    #+#             */
-/*   Updated: 2023/03/26 20:36:04 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/03/26 22:08:51 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int	get_median(t_stack *a, int size)
 		j = -1;
 		while (++j < size - i)
 		{
+			if (tab[j] > tab[j + 1])
 			if (tab[j] > tab[j + 1] && j + 1 < size)
 			{
 				t = tab[j];
@@ -85,8 +86,8 @@ int	get_median(t_stack *a, int size)
 			}
 		}
 	}
-	for (int i = 0; i < size; i++)
-		printf("%d\n", tab[i]);
+	// for (int i = 0; i < size; i++)
+		// printf("%d\n", tab[i]);
 	median = tab[size / 2];
 	free(tab);
 	return (median);
@@ -98,17 +99,10 @@ void	five(t_stack **a, t_stack **b)
 	int	i;
 
 	i = 0;
-<<<<<<< HEAD
-	median = get_median(*a, ft_lstsize(*a));
-	while (i < 2)
-=======
-	if (ft_lstsize(*a) == 3)
-		return ((void)three(a));
 	median = get_median(*a, ft_lstsize(*a));
 	while (i < 2 && (*a))
->>>>>>> fc1f403c8239c76a1e5fb1e3b99753f976213eae
 	{
-		if ((*a)->i <= median)
+		if ((*a)->i < median)
 		{
 			pb(a, b);
 			i++;
@@ -116,22 +110,15 @@ void	five(t_stack **a, t_stack **b)
 		else
 			ra(a);
 	}
-<<<<<<< HEAD
-	three(a);
-=======
 	if (i == 0)
 		return ;
-	if ((*a)->i > (*a)->nx->i)
-		sa(a);
 	three(a);
 	if ((*b) && (*b)->i < (*b)->nx->i)
 		sb(b);
->>>>>>> fc1f403c8239c76a1e5fb1e3b99753f976213eae
 	while (i--)
 		pa(a, b);
 }
 
-<<<<<<< HEAD
 int	find_index(t_stack *a, int i)
 {
 	int	index;
@@ -147,16 +134,47 @@ int	find_index(t_stack *a, int i)
 	return (-1);
 }
 
+void insertion_sort(t_stack **stack)
+{
+	t_stack *curr = *stack;
+	t_stack *sorted = NULL;
+
+	while (curr != NULL)
+	{
+		t_stack *next = curr->nx;
+
+		if (sorted == NULL || curr->i < sorted->i)
+		{
+			curr->nx = sorted;
+			sorted = curr;
+		}
+		else
+		{
+			t_stack *temp = sorted;
+			while (temp->nx != NULL && curr->i > temp->nx->i)
+			{
+				temp = temp->nx;
+			}
+			curr->nx = temp->nx;
+			temp->nx = curr;
+		}
+		curr = next;
+	}
+	*stack = sorted;
+}
+
 void sort(t_stack **a, t_stack **b, int size)
 {
 	int	median;
 	int i;
 
+	if (size <= 3 && size > 1)
+		return (three(a));
 	median = get_median(*a, size);
-	ft_printf("median = %d\n", median);
+	// ft_printf("median = %d\n", median);
 	while (find_index(*a, median) != 0)
 	{
-		if (find_index(*a, median) <= ft_lstsize(*a) / 2)
+		if (find_index(*a, median) < ft_lstsize(*a) / 2)
 			ra(a);
 		else
 			rra(a);
@@ -169,31 +187,29 @@ void sort(t_stack **a, t_stack **b, int size)
 		else
 			ra(a);
 	}
-	// sort(a, b, ft_lstsize(*a));
-
-
 	prtl(*a, 'a');
 	prtl(*b, 'b');
+	sort(a, b, ft_lstsize(*a));
+	while (find_index(*a, median) != size - 1){ft_printf("test\n");
+		ra(a);}
+	// sort(a, b, size - find_index(*a, median) - 1);
+	while (b)
+		pa(a, b);
+	// prtl(*a, 'a');
+	// prtl(*b, 'b');
 }
 
-=======
->>>>>>> fc1f403c8239c76a1e5fb1e3b99753f976213eae
 void	algorithm(t_stack **a, t_stack **b)
 {
 	int	i;
 
 	i = ft_lstsize((*a));
-<<<<<<< HEAD
 	if (i <= 3)
 		three(a);
 	if (i <= 5)
 		five(a, b);
 	else
 		sort(a, b, ft_lstsize(*a));
-=======
-	if (i <= 5)
-		five(a, b);
->>>>>>> fc1f403c8239c76a1e5fb1e3b99753f976213eae
 }
 
 int	main(int ac, char *av[]){
@@ -211,13 +227,9 @@ int	main(int ac, char *av[]){
 	if (is_sorted(a))
 		return (0);
 	algorithm(&a, &b);
-<<<<<<< HEAD
-	ft_lstclear(&a);
-	ft_lstclear(&b);
-	// prtl(a, 'a');
-=======
 	// prtl(a, 'a');
 	// prtl(b, 'b');
->>>>>>> fc1f403c8239c76a1e5fb1e3b99753f976213eae
+	ft_lstclear(&a);
+	ft_lstclear(&b);
 	return (0);
 }
