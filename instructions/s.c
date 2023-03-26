@@ -1,36 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rr.c                                               :+:      :+:    :+:   */
+/*   s.c                                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/20 16:10:13 by romaurel          #+#    #+#             */
-/*   Updated: 2023/03/20 16:20:40 by romaurel         ###   ########.fr       */
+/*   Created: 2023/03/15 16:17:39 by romaurel          #+#    #+#             */
+/*   Updated: 2023/03/22 15:35:32 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rra(t_stack **a)
+void	sa(t_stack **a)
 {
-	t_stack	*tmp;
+	int	temp;
 
-	if (!a)
+	if (!(*a)->nx || !*a)
 		return ;
-	tmp = (*a);
-	ft_lstadd_back(a, ft_lstnew((*a)->i));
-	(*a) = tmp->nx;
-	ft_lstdelone(tmp);
+	temp = (*a)->i;
+	(*a)->i = (*a)->nx->i;
+	(*a)->nx->i = temp;
+	ft_printf("sa\n");
 }
 
-void	rrb(t_stack **b)
+void	sb(t_stack **b)
 {
-	rra(b);
+	int	temp;
+
+	if (!(*b)->nx || !*b)
+		return ;
+	temp = (*b)->i;
+	(*b)->i = (*b)->nx->i;
+	(*b)->nx->i = temp;
+	ft_printf("sb\n");
 }
 
-void	rrr(t_stack **a, t_stack **b)
+void	ss(t_stack **a, t_stack **b)
 {
-	rra(a);
-	rra(b);
+	sa(a);
+	sb(b);
 }

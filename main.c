@@ -98,8 +98,15 @@ void	five(t_stack **a, t_stack **b)
 	int	i;
 
 	i = 0;
+<<<<<<< HEAD
 	median = get_median(*a, ft_lstsize(*a));
 	while (i < 2)
+=======
+	if (ft_lstsize(*a) == 3)
+		return ((void)three(a));
+	median = get_median(*a, ft_lstsize(*a));
+	while (i < 2 && (*a))
+>>>>>>> fc1f403c8239c76a1e5fb1e3b99753f976213eae
 	{
 		if ((*a)->i <= median)
 		{
@@ -109,11 +116,22 @@ void	five(t_stack **a, t_stack **b)
 		else
 			ra(a);
 	}
+<<<<<<< HEAD
 	three(a);
+=======
+	if (i == 0)
+		return ;
+	if ((*a)->i > (*a)->nx->i)
+		sa(a);
+	three(a);
+	if ((*b) && (*b)->i < (*b)->nx->i)
+		sb(b);
+>>>>>>> fc1f403c8239c76a1e5fb1e3b99753f976213eae
 	while (i--)
 		pa(a, b);
 }
 
+<<<<<<< HEAD
 int	find_index(t_stack *a, int i)
 {
 	int	index;
@@ -158,17 +176,24 @@ void sort(t_stack **a, t_stack **b, int size)
 	prtl(*b, 'b');
 }
 
+=======
+>>>>>>> fc1f403c8239c76a1e5fb1e3b99753f976213eae
 void	algorithm(t_stack **a, t_stack **b)
 {
 	int	i;
 
 	i = ft_lstsize((*a));
+<<<<<<< HEAD
 	if (i <= 3)
 		three(a);
 	if (i <= 5)
 		five(a, b);
 	else
 		sort(a, b, ft_lstsize(*a));
+=======
+	if (i <= 5)
+		five(a, b);
+>>>>>>> fc1f403c8239c76a1e5fb1e3b99753f976213eae
 }
 
 int	main(int ac, char *av[]){
@@ -186,8 +211,13 @@ int	main(int ac, char *av[]){
 	if (is_sorted(a))
 		return (0);
 	algorithm(&a, &b);
+<<<<<<< HEAD
 	ft_lstclear(&a);
 	ft_lstclear(&b);
 	// prtl(a, 'a');
+=======
+	// prtl(a, 'a');
+	// prtl(b, 'b');
+>>>>>>> fc1f403c8239c76a1e5fb1e3b99753f976213eae
 	return (0);
 }
