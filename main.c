@@ -6,7 +6,7 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 15:47:33 by romaurel          #+#    #+#             */
-/*   Updated: 2023/03/24 18:40:07 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/03/26 20:36:04 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int	get_median(t_stack *a, int size)
 
 	i = -1;
 	tab = malloc(size * sizeof(int));
+	if (!tab)
+		return (0);
 	while (a)
 	{
 		tab[++i] = a->i;
@@ -75,7 +77,7 @@ int	get_median(t_stack *a, int size)
 		j = -1;
 		while (++j < size - i)
 		{
-			if (tab[j] > tab[j + 1])
+			if (tab[j] > tab[j + 1] && j + 1 < size)
 			{
 				t = tab[j];
 				tab[j] = tab[j + 1];
@@ -83,6 +85,8 @@ int	get_median(t_stack *a, int size)
 			}
 		}
 	}
+	for (int i = 0; i < size; i++)
+		printf("%d\n", tab[i]);
 	median = tab[size / 2];
 	free(tab);
 	return (median);
@@ -110,6 +114,50 @@ void	five(t_stack **a, t_stack **b)
 		pa(a, b);
 }
 
+int	find_index(t_stack *a, int i)
+{
+	int	index;
+
+	index = 0;
+	while (a)
+	{
+		if (a->i == i)
+			return (index);
+		a = a->nx;
+		index++;
+	}
+	return (-1);
+}
+
+void sort(t_stack **a, t_stack **b, int size)
+{
+	int	median;
+	int i;
+
+	median = get_median(*a, size);
+	ft_printf("median = %d\n", median);
+	while (find_index(*a, median) != 0)
+	{
+		if (find_index(*a, median) <= ft_lstsize(*a) / 2)
+			ra(a);
+		else
+			rra(a);
+	}
+	i = -1;
+	while (++i < size)
+	{
+		if ((*a)->i <= median)
+			pb(a, b);
+		else
+			ra(a);
+	}
+	// sort(a, b, ft_lstsize(*a));
+
+
+	prtl(*a, 'a');
+	prtl(*b, 'b');
+}
+
 void	algorithm(t_stack **a, t_stack **b)
 {
 	int	i;
@@ -119,7 +167,8 @@ void	algorithm(t_stack **a, t_stack **b)
 		three(a);
 	if (i <= 5)
 		five(a, b);
-	// ft_printf("%d\n", get_median(*a, i));
+	else
+		sort(a, b, ft_lstsize(*a));
 }
 
 int	main(int ac, char *av[]){
@@ -137,6 +186,8 @@ int	main(int ac, char *av[]){
 	if (is_sorted(a))
 		return (0);
 	algorithm(&a, &b);
-	prtl(a, 'a');
+	ft_lstclear(&a);
+	ft_lstclear(&b);
+	// prtl(a, 'a');
 	return (0);
 }
