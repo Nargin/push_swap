@@ -6,7 +6,7 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 15:47:33 by romaurel          #+#    #+#             */
-/*   Updated: 2023/03/26 22:08:51 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/03/26 22:17:57 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,36 +131,7 @@ int	find_index(t_stack *a, int i)
 		a = a->nx;
 		index++;
 	}
-	return (-1);
-}
-
-void insertion_sort(t_stack **stack)
-{
-	t_stack *curr = *stack;
-	t_stack *sorted = NULL;
-
-	while (curr != NULL)
-	{
-		t_stack *next = curr->nx;
-
-		if (sorted == NULL || curr->i < sorted->i)
-		{
-			curr->nx = sorted;
-			sorted = curr;
-		}
-		else
-		{
-			t_stack *temp = sorted;
-			while (temp->nx != NULL && curr->i > temp->nx->i)
-			{
-				temp = temp->nx;
-			}
-			curr->nx = temp->nx;
-			temp->nx = curr;
-		}
-		curr = next;
-	}
-	*stack = sorted;
+	return (0);
 }
 
 void sort(t_stack **a, t_stack **b, int size)
@@ -168,13 +139,16 @@ void sort(t_stack **a, t_stack **b, int size)
 	int	median;
 	int i;
 
+	printf("size = %d\n", size);
+	if (!size)
+		return ;
 	if (size <= 3 && size > 1)
 		return (three(a));
 	median = get_median(*a, size);
-	// ft_printf("median = %d\n", median);
 	while (find_index(*a, median) != 0)
 	{
-		if (find_index(*a, median) < ft_lstsize(*a) / 2)
+		ft_printf("%d\n", find_index(*a, median));
+		if (find_index(*a, median) <= ft_lstsize(*a) / 2)
 			ra(a);
 		else
 			rra(a);
@@ -190,9 +164,9 @@ void sort(t_stack **a, t_stack **b, int size)
 	prtl(*a, 'a');
 	prtl(*b, 'b');
 	sort(a, b, ft_lstsize(*a));
-	while (find_index(*a, median) != size - 1){ft_printf("test\n");
-		ra(a);}
-	// sort(a, b, size - find_index(*a, median) - 1);
+	while (find_index(*a, median) != size - 1)
+		ra(a);
+	sort(a, b, size - find_index(*a, median) - 1);
 	while (b)
 		pa(a, b);
 	// prtl(*a, 'a');
