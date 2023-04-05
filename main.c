@@ -16,7 +16,7 @@ void	three(t_stack **a)
 {
 	if (ft_lstsize(*a) == 2)
 		swap(*a, 'a');
-	if ((*a)->i > (*a)->nx->i && (*a)->nx->i < (*a)->nx->nx->i
+	else if ((*a)->i > (*a)->nx->i && (*a)->nx->i < (*a)->nx->nx->i
 		&& (*a)->i < (*a)->nx->nx->i)
 		swap(*a, 'a');
 	else if ((*a)->i > (*a)->nx->i && (*a)->nx->i < (*a)->nx->nx->i
@@ -65,7 +65,7 @@ void	five(t_stack **a, t_stack **b)
 
 void	sort_size(t_stack **a, t_stack **b, int *array, t_var *utils)
 {
-	if (ft_lstsize(*a) == 3)
+	if (ft_lstsize(*a) <= 3)
 		three(a);
 	else if (ft_lstsize(*a) <= 5)
 		five(a, b);
