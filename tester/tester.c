@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tester.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: robin <robin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:57:07 by romaurel          #+#    #+#             */
-/*   Updated: 2023/04/05 17:01:33 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/04/05 18:45:30 by robin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,15 @@ void	instructions(char *s, t_stack **stack_a, t_stack **stack_b)
 		else if (!ft_strcmp(s, "rrb"))
 			b_reverse_rotate(stack_b);
 		else if (!ft_strcmp(s, "rrr"))
-			b_reverse_rotate(stack_a), b_reverse_rotate(stack_b);
+		{
+			b_reverse_rotate(stack_a);
+			b_reverse_rotate(stack_b);
+		}
 		else
 			return ((void)exit(0), (void)ft_printf("Error\n"));
 }
 
-int	main(int ac, char *av[])
+int main(int ac, char **av)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
@@ -72,4 +75,5 @@ int	main(int ac, char *av[])
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
+	return (0);
 }
