@@ -6,11 +6,11 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:12:05 by romaurel          #+#    #+#             */
-/*   Updated: 2023/04/05 17:01:34 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/04/05 20:33:42 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 void	b_swap(t_stack *stack)
 {

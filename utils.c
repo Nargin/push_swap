@@ -6,7 +6,7 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 03:39:23 by romaurel          #+#    #+#             */
-/*   Updated: 2023/04/05 14:39:36 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/04/05 20:42:29 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	is_doublon(char *av[], int ac)
 	{
 		j = i;
 		while (++j < ac)
-			if (atoi(av[j]) == atoi(av[i]) && j != i)
+			if (ston(av[j]) == ston(av[i]) && j != i)
 				return (0);
 	}
 	return (1);
@@ -60,7 +60,7 @@ int	ston(const char *str)
 {
 	int	i;
 	int	neg;
-	int	res;
+	long long	res;
 
 	i = 0;
 	neg = 1;
@@ -79,5 +79,7 @@ int	ston(const char *str)
 		res = res * 10 + str[i] - '0';
 		i++;
 	}
-	return (res * neg);
+	if (res * neg < -2147483648 || res * neg > 2147483647)
+		return ((void)ft_printf("Error\n"), (void)exit(0), 0);
+	return ((int)res * neg);
 }
