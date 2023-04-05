@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romaurel <rxonrgn@gmail.com>               +#+  +:+       +#+        */
+/*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 03:39:23 by romaurel          #+#    #+#             */
-/*   Updated: 2023/04/05 04:44:59 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/04/05 14:39:36 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	is_sorted(t_stack *stack_a)
 int	is_doublon(char *av[], int ac)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	while (++i < ac)

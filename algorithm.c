@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romaurel <rxonrgn@gmail.com>               +#+  +:+       +#+        */
+/*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 04:23:23 by romaurel          #+#    #+#             */
-/*   Updated: 2023/04/05 04:48:13 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/04/05 14:39:01 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "push_swap.h"
 
@@ -21,8 +20,7 @@ void	from_a_to_b(t_stack **a, t_stack **b, int *array, t_var *u)
 			push(a, b, 'b');
 		while (ft_lstsize(*b) < u->end - u->start)
 		{
-			if (!((*a)->i < array[u->end]
-				&& (*a)->i >= array[u->start]))
+			if (!((*a)->i < array[u->end] && (*a)->i >= array[u->start]))
 				rotate(a, 'a');
 			else
 			{

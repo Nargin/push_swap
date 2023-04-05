@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romaurel <rxonrgn@gmail.com>               +#+  +:+       +#+        */
+/*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 03:47:41 by romaurel          #+#    #+#             */
-/*   Updated: 2023/04/05 04:49:16 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/04/05 14:39:13 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int	main(int ac, char **av)
 	t_stack	*a;
 	t_stack	*b;
 	t_var	utils;
-	int	*array;
+	int		*array;
 
 	if (ac < 3 || !is_doublon(av, ac))
 		return (ft_printf("Error\n"));
