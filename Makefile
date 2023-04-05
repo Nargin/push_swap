@@ -1,4 +1,4 @@
-SRC = cl_func/lstfunc.c cl_func/lstdel.c instructions.c main.c utils.c sorting.c find.c algorithm.c
+SRC = ft_lst/lstfunc.c ft_lst/lstdel.c instructions.c main.c utils.c find_num.c algorithm.c
 
 OBJS = $(SRC:.c=.o)
 

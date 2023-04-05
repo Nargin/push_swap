@@ -23,7 +23,7 @@ void	from_a_to_b(t_stack **a, t_stack **b, int *array, t_var *u)
 		{
 			if (!((*a)->i < array[u->end]
 				&& (*a)->i >= array[u->start]))
-				ft_rotate(a, 'a');
+				rotate(a, 'a');
 			else
 			{
 				push(a, b, 'b');
@@ -62,7 +62,7 @@ void	check_cases(t_stack **a, t_stack **b, int *array, t_var *u)
 {
 	if ((*b)->i == array[u->max])
 	{
-		ft_push(b, a, 'a');
+		push(b, a, 'a');
 		u->max--;
 		if ((*a)->nx && (*a)->i > (*a)->nx->i)
 		{

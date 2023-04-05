@@ -15,24 +15,24 @@
 void	three(t_stack **a)
 {
 	if (ft_lstsize(*a) == 2)
-		swap(a, 'a');
+		swap(*a, 'a');
 	if ((*a)->i > (*a)->nx->i && (*a)->nx->i < (*a)->nx->nx->i
 		&& (*a)->i < (*a)->nx->nx->i)
-		swap(a, 'a');
+		swap(*a, 'a');
 	else if ((*a)->i > (*a)->nx->i && (*a)->nx->i < (*a)->nx->nx->i
 		&& (*a)->i > (*a)->nx->nx->i)
 		rotate(a, 'a');
 	else if ((*a)->i < (*a)->nx->i && (*a)->nx->i > (*a)->nx->nx->i
 		&& (*a)->i < (*a)->nx->nx->i)
 	{
-		swap(a, 'a');
+		swap(*a, 'a');
 		rotate(a, 'a');
 	}
 	else if ((*a)->i > (*a)->nx->i && (*a)->nx->i > (*a)->nx->nx->i
 		&& (*a)->i > (*a)->nx->nx->i)
 	{
 		rotate(a, 'a');
-		swap(a, 'a');
+		swap(*a, 'a');
 	}
 	else if ((*a)->i < (*a)->nx->i && (*a)->nx->i > (*a)->nx->nx->i
 		&& (*a)->i > (*a)->nx->nx->i)
@@ -56,7 +56,7 @@ void	five(t_stack **a, t_stack **b)
 		else
 			rotate(a, 'a');
 	}
-	sort_three(a);
+	three(a);
 	if ((*b)->nx && (*b)->i < (*b)->nx->i)
 		swap(*b, 'b');
 	while (*b)

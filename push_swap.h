@@ -61,6 +61,13 @@ void	reverse_rotate(t_stack **stack, char s);
 void	rotate(t_stack **stack, char s);
 void	swap(t_stack *stack, char s);
 
+/* find_num.c */
+void	bubble_sort(int *arr, int arr_len);
+int	find_big_num(t_stack *stack);
+int	find_small_num(t_stack *stack_a);
+int	find_after_smallnum(t_stack *stack_a);
+int	find_big_num_index(t_stack *stack, int max);
+
 /* lstdel.c */
 void	ft_lstclear(t_stack **lst);
 void	ft_lstdelone(t_stack *lst);
