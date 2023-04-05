@@ -6,11 +6,11 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:11:09 by romaurel          #+#    #+#             */
-/*   Updated: 2023/02/14 15:27:41 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/04/05 17:01:35 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../push_swap.h"
 
 int	ft_strlen(char *s)
 {

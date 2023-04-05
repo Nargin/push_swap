@@ -1,8 +1,12 @@
 SRC = ft_lst/lstfunc.c ft_lst/lstdel.c instructions.c main.c utils.c find_num.c algorithm.c
 
+SRC_TESTER = tester/tester.c tester/bonus_instrucs.c tester/get_next_line.c tester/get_next_line_utils.c
+
 OBJS = $(SRC:.c=.o)
 
 RM = rm -f
+
+TESTER = checker_linux
 
 NAME = push_swap
 
@@ -10,12 +14,17 @@ PRINTF = ft_printf/libftprintf.a
 
 all : $(NAME)
 
+bonus : $(NAME) $(TESTER)
+
 $(PRINTF) :
 		make -C ft_printf/ all
 
 $(NAME) :	$(OBJS)
 				make -C ft_printf/
 				gcc -Wall -Werror -Wextra $(OBJS) -I ./ -I ./ft_printf/ -L ./ft_printf -lftprintf -o $(NAME)
+
+$(TESTER) :	$(SRC_TESTER)
+				gcc -Wall -Werror -Wextra $(SRC_TESTER) -I ./ -I ./ft_printf/ -L ./ft_printf -lftprintf -o $(TESTER)
 
 .c.o:
 		gcc -Wall -Werror -Wextra -I ./ -I ./ft_printf/ -c $< -o $(<:.c=.o)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romaurel <rxonrgn@gmail.com>               +#+  +:+       +#+        */
+/*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:26 by romaurel          #+#    #+#             */
-/*   Updated: 2023/04/05 04:44:13 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:48:13 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	not_max_num(t_stack **a, t_stack **b, t_var *u);
 void	check_cases(t_stack **a, t_stack **b, int *array, t_var *u);
 void	check_case2(t_stack **a, t_var *u);
 
+
 /* instructions.c */
 void	push(t_stack **src, t_stack **dest, char s);
 void	reverse_rotate(t_stack **stack, char s);
@@ -79,5 +80,24 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new);
 void	ft_lstadd_front(t_stack **lst, t_stack *new);
 t_stack	*ft_lstlast(t_stack *lst);
 int	ft_lstsize(t_stack *lst);
+
+/* TESTEUR */
+
+/* bonus_instrucs.c */
+void	b_push(t_stack **src, t_stack **dest);
+void	b_reverse_rotate(t_stack **stack);
+void	b_rotate(t_stack **stack);
+void	b_swap(t_stack *stack);
+
+/* get_next_line.c */
+char	*ft_strjoin(char *s1, char *s2);
+char	*soloq_lp_farmer(char **buffer);
+char	*get_next_line(int fd);
+char	*ft_cl(char **buffer);
+
+/* get_next_line_utils.c */
+char	*ft_strndup(char *s, int len);
+int	ft_strchr(char *s, char c);
+int	ft_strlen(char *s);
 
 #endif
