@@ -64,3 +64,18 @@ void	reverse_rotate(t_stack **stack, char s)
 	temp->nx = NULL;
 	ft_printf("rr%c\n", s);
 }
+
+t_stack	*fill_stack_a(int ac, char **av)
+{
+	int		i;
+	t_stack	*stack_a;
+
+	i = 0;
+	stack_a = NULL;
+	while (i < ac)
+	{
+		ft_lstadd_back(&stack_a, ft_lstnew(ston(av[i])));
+		i++;
+	}
+	return (stack_a);
+}

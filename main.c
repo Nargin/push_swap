@@ -101,16 +101,13 @@ int	main(int ac, char **av)
 	t_stack	*b;
 	t_var	utils;
 	int	*array;
-	int	i;
 
-	if (ac < 3 || is_doublon(av, ac))
+	if (ac < 3 || !is_doublon(av, ac))
 		return (ft_printf("Error\n"));
-	i = 0;
-	while (++i < ac)
-		ft_lstadd_back(&a, ft_lstnew(atoi(av[i])));
+	a = fill_stack_a(ac - 1, av + 1);
 	b = NULL;
 	array = sort_array(a);
-	if (!is_sorted(a))
+	if (is_sorted(a))
 		sort_size(&a, &b, array, &utils);
 	vortex_void_devourer(a, b, array);
 	return (0);

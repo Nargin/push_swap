@@ -58,6 +58,7 @@ void	check_case2(t_stack **a, t_var *u);
 /* instructions.c */
 void	push(t_stack **src, t_stack **dest, char s);
 void	reverse_rotate(t_stack **stack, char s);
+t_stack	*fill_stack_a(int ac, char **av);
 void	rotate(t_stack **stack, char s);
 void	swap(t_stack *stack, char s);
 
