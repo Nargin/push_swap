@@ -1,6 +1,6 @@
 SRC = ft_lst/lstfunc.c ft_lst/lstdel.c instructions.c main.c utils.c find_num.c algorithm.c
 
-SRC_TESTER = tester/tester.c tester/bonus_instrucs.c tester/get_next_line.c tester/get_next_line_utils.c ft_lst/lstfunc.c ft_lst/lstdel.c instructions.c utils.c find_num.c algorithm.c 
+SRC_TESTER = tester/tester.c tester/b_instructions.c tester/get_next_line.c tester/get_next_line_utils.c ft_lst/lstfunc.c ft_lst/lstdel.c instructions.c utils.c find_num.c algorithm.c 
 
 OBJS = $(SRC:.c=.o)
 
@@ -60,11 +60,11 @@ test500:			$(NAME)
 					@./push_swap $(ARG) | wc -l
 
 clean :
-		$(RM) $(OBJS)
+		$(RM) $(OBJS) $(OBJS_TESTER)
 		make -C ft_printf/ clean
 
 fclean :	clean
-				$(RM) $(NAME)
+				$(RM) $(NAME) $(TESTER)
 				make -C ft_printf/ fclean
 
 re:			fclean all

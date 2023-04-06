@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tester.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: robin <robin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:57:07 by romaurel          #+#    #+#             */
-/*   Updated: 2023/04/05 20:45:16 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/04/06 01:59:01 by robin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void	instructions(char *s, t_stack **stack_a, t_stack **stack_b)
 		else if (!ft_strcmp(s, "ss\n"))
 			return (b_swap(*stack_a), b_swap(*stack_b));
 		else if (!ft_strcmp(s, "pa\n"))
-			b_push(stack_a, stack_b);
-		else if (!ft_strcmp(s, "pb\n"))
 			b_push(stack_b, stack_a);
+		else if (!ft_strcmp(s, "pb\n"))
+			b_push(stack_a, stack_b);
 		else if (!ft_strcmp(s, "ra\n"))
 			b_rotate(stack_a);
 		else if (!ft_strcmp(s, "rb\n"))
@@ -64,18 +64,19 @@ int main(int ac, char **av)
 	s = get_next_line(0);
 	while (s)
 	{
-		ft_printf("%s", s);
 		instructions(s, &stack_a, &stack_b);
+		// for (t_stack *temp = stack_a; temp; temp = temp->nx)
+		// 	ft_printf("stack a : %d\n", temp->i);
+		// for (t_stack *temp = stack_b; temp; temp = temp->nx)
+		// 	ft_printf("stack b : %d\n", temp->i);
 		free(s);
 		s = get_next_line(0);
 	}
-	for (t_stack *temp = stack_a; temp; temp = temp->nx)
-		ft_printf("stack a : %d\n", temp->i);
-	for (t_stack *temp = stack_b; temp; temp = temp->nx)
-		ft_printf("stack b : %d\n", temp->i);
-	if (!is_sorted(stack_a))
+	if (!is_sorted(stack_a) && !stack_b)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
+	ft_lstclear(&stack_a);
+	ft_lstclear(&stack_b);
 	return (0);
 }
