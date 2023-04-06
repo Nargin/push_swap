@@ -6,7 +6,7 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 03:39:23 by romaurel          #+#    #+#             */
-/*   Updated: 2023/04/05 20:42:29 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/04/06 17:06:31 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int	*sort_array(t_stack *stack)
 
 int	ston(const char *str)
 {
-	int	i;
-	int	neg;
+	int			i;
+	int			neg;
 	long long	res;
 
 	i = 0;
